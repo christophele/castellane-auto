@@ -1,0 +1,31 @@
+{
+    "name": "frontend",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "bootstrap": "^4.0.0-beta.2",
+        "classnames": "^2.2.5",
+        "glamor": "^2.20.40",
+        "mysql": "^2.15.0",
+        "outy": "^0.1.2",
+        "react": "^16.2.0",
+        "react-bootstrap-table": "^4.3.1",
+        "react-dom": "^16.2.0",
+        "react-redux": "^5.0.7",
+        "react-router": "^4.2.0",
+        "react-router-bootstrap": "^0.24.4",
+        "react-router-dom": "^4.2.2",
+        "react-scripts": "1.0.17",
+        "redux": "^4.0.0",
+        "redux-saga": "^0.16.0",
+        "redux-thunk": "^2.2.0"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --env=jsdom",
+        "eject": "react-scripts eject"
+    },
+    "proxy": "http://localhost:3002/"
+}
