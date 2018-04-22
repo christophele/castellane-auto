@@ -1,20 +1,35 @@
+/* action creator */
+/* une action renvoie un type (nom de l'action) et un payload (les données) */
+
 import axios from 'axios';
 
-// Action type
-export const GET_LECONS = 'GET_LECONS';
-export const ERROR_GET_LECONS = 'ERROR_GET_LECONS';
+import {ACTION_TYPES} from './ActionTypes';
 
-const API_END_POINT = 'http://localhost:3001/';
+const API_END_POINT = 'http://localhost:3002';
 
-export function getLecons() {
-    return function(dispatch) {
-        return axios(`${API_END_POINT}lecons`)
-        .then(function(response) {
-            console.log(response.data.lecons);
-            dispatch({type: GET_LECONS, payload: response.data.lecons});
-        })
-        .catch(function (error) {
-            dispatch({type: ERROR_GET_LECONS, errors: error.response.data.detail})
+/* Lecon */
+
+export function getLecons(){
+    return function (dispatch){
+        axios.get(`${API_END_POINT}/lecons`).then((response) => {
+            dispatch({type: ACTION_TYPES.GET_LECONS, payload: response.data})
+        });
+    }
+}
+
+export function getLeconById(){
+    return function (dispatch){
+        axios.get(`${API_END_POINT}/lecons/:id`).then((response) =>{
+            dispatch({type: ACTION_TYPES.GET_LECON, payload: response.data})
+        });
+    }
+}
+
+/* Client */
+export function getClients(){
+    return function (dispatch){
+        axios.get(`${API_END_POINT}/clients`).then((response) => {
+            dispatch({type: ACTION_TYPES.GET_CLIENTS, payload : response.data})
         });
     }
 }
