@@ -5,6 +5,8 @@ import LeconForm from './containers/LeconForm';
 import LeconList from './containers/LeconList';
 // import Client from './containers/Client';
 import ClientList from './containers/ClientList';
+import MoniteurList from './containers/MoniteurList';
+import VehiculeList from './containers/VehiculeList';
 import NotFound from './components/NotFound';
 
 class Routes extends Component {
@@ -16,6 +18,9 @@ class Routes extends Component {
                     <Route path='lecons/:id' component={Lecon} />
                     <Route path='lecon-form' component={LeconForm} />
                     <Route path='clients' component={ClientList}/>
+                    <Route path='moniteurs' component={MoniteurList} />
+                    <Route path='vehicules' component={VehiculeList} />
+
                     <Route path='*' component={NotFound} />
                 </Router>
             </div>

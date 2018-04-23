@@ -12,7 +12,7 @@ const API_END_POINT = 'http://localhost:3002';
 export function getLecons(){
     return function (dispatch){
         axios.get(`${API_END_POINT}/lecons`).then((response) => {
-            dispatch({type: ACTION_TYPES.GET_LECONS, payload: response.data})
+            dispatch({type : ACTION_TYPES.GET_LECONS, payload : response.data})
         });
     }
 }
@@ -20,7 +20,7 @@ export function getLecons(){
 export function getLeconById(){
     return function (dispatch){
         axios.get(`${API_END_POINT}/lecons/:id`).then((response) =>{
-            dispatch({type: ACTION_TYPES.GET_LECON, payload: response.data})
+            dispatch({type : ACTION_TYPES.GET_LECON, payload : response.data})
         });
     }
 }
@@ -29,7 +29,27 @@ export function getLeconById(){
 export function getClients(){
     return function (dispatch){
         axios.get(`${API_END_POINT}/clients`).then((response) => {
-            dispatch({type: ACTION_TYPES.GET_CLIENTS, payload : response.data})
+            dispatch({type : ACTION_TYPES.GET_CLIENTS, payload : response.data})
+        });
+    }
+}
+
+/* Moniteur */
+
+export function getMoniteurs(){
+    return function (dispatch){
+        axios.get(`${API_END_POINT}/moniteurs`).then((response) => {
+            dispatch({type : ACTION_TYPES.GET_MONITEURS, payload : response.data})
+        });
+    }
+}
+
+/* Mehicule */
+
+export function getVehicules() {
+    return function (dispatch) {
+        axios.get(`${API_END_POINT}/vehicules`).then((response) => {
+            dispatch({type : ACTION_TYPES.GET_VEHICULES, payload : response.data})
         });
     }
 }

@@ -24,7 +24,7 @@ class ClientList extends Component {
         console.log(this.props.clients);
         return (
             <div>
-                <p>Liste des clients</p>
+                <h1>Liste des clients</h1>
                 {/* tableau pour afficher les lignes */}
                 <table className="table table-hover">
                     <thead>
