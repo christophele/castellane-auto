@@ -14,8 +14,14 @@ const ClientListItem = (props) => {
             <td>{client.mailclient}</td>
             <td>{client.dateinscriptionclient}</td>
             <td>{client.typeclient}</td>
+            <td><button className="btn btn-danger" onClick={() => deleteClient(client)} >Supprimer</button></td>
         </tr>
     )
+
+    // suppression du client, on envoie le client à delete par callback au container car c'est lui qui est connecté pr faire la suppresion
+    function deleteClient(client){
+        props.deleteClientCallBack(client)
+    }
 }
 
 export default ClientListItem;

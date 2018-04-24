@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getClients} from '../actions/index';
+import {getClients, deleteClient} from '../actions/index';
 import ClientListItem from '../components/ClientListItem';
 
 class ClientList extends Component {
@@ -15,9 +15,14 @@ class ClientList extends Component {
         const {clients} = this.props;
         if(clients){
             return clients.map((client) => {
-                return <ClientListItem key={client.numclient} client={client} />
+                return <ClientListItem key={client.numclient} client={client} deleteClientCallBack={(client) => this.deleteClientCallBack(client)}/>
             })
         }
+    }
+
+    // supprime le post en prenant l'id du client
+    deleteClientCallBack(client){
+        this.props.deleteClient(client.numclient);
     }
 
     render() {
@@ -37,6 +42,7 @@ class ClientList extends Component {
                             <th>Mail</th>
                             <th>Date d'inscription</th>
                             <th>Statut</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +61,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({getClients}, dispatch),
+    ...bindActionCreators({getClients, deleteClient}, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientList);

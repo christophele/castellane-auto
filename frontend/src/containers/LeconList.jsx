@@ -32,7 +32,6 @@ class LeconList extends Component {
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <th>Numéro de leçon</th>
                             <th>Date de leçon</th>
                             <th>Heure de leçon</th>
                             <th>Tarif de l'heure en euros</th>
