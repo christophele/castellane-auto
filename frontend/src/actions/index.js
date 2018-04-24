@@ -3,7 +3,7 @@
 
 import axios from 'axios';
 
-import {ACTION_TYPES} from './ActionTypes';
+import {ACTION_TYPES} from './action-types';
 
 const API_END_POINT = 'http://localhost:3002';
 

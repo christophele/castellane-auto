@@ -1,4 +1,4 @@
-import {ACTION_TYPES} from '../actions/ActionTypes';
+import {ACTION_TYPES} from '../actions/action-types';
 
 export default function (state = [], action) {
     switch(action.type){
