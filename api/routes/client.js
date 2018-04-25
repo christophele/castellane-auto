@@ -79,7 +79,7 @@ router.get('/:clientId', (req, res, next) => {
 router.delete('/:clientId', (req, res, next) => {
     const idClient = req.params.clientId;
     if (idClient) {
-        connection.query('DELETE FROM client WHERE numclient = ' + idClient, (err, data) => {
+            connection.query('DELETE FROM client WHERE numclient = ' + idClient, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({err});

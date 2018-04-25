@@ -5,6 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import Routes from './routes';
 import reducers from './reducers';
 import thunk from 'redux-thunk';
+import './css/main.css';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 

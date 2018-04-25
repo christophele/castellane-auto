@@ -54,6 +54,23 @@ export function deleteClient(id) {
     }
 }
 
+export function createClient(client) {
+    return function (dispatch) {
+        axios.post(`${API_END_POINT}/clients/`, {
+            nomclient : client.nomclient,
+            prenomclient : client.prenomclient,
+            adresseclient : client.adresseclient,
+            datedenaissanceclient : client.datedenaissanceclient,
+            telephoneclient : client.telephoneclient,
+            mailclient : client.mailclient,
+            dateinscriptionclient : client.dateinscriptionclient,
+            typeclient  : client.typeclient
+        }).then((response) => {
+            dispatch({type: ACTION_TYPES.POST_CLIENT, payload: response.data})
+        });
+    }
+}
+
 /**********************************/
 /************ MONITEUR ************/
 /**********************************/

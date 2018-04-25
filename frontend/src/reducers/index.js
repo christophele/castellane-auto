@@ -5,13 +5,15 @@ import leconReducer from './lecon-reducer';
 import clientReducer from './client-reducer';
 import moniteurReducer from './moniteur-reducer';
 import vehiculeReducer from './vehicule-reducer';
+import {reducer as ReducerForm} from 'redux-form';
 
 /* on récupère chaque reducer qu'on stocke dans une variable et qui devient un bout de state récupérable grâce à la fonction mapStateToProps */
 const rootReducer = combineReducers({
     lecons : leconReducer,
     clients : clientReducer,
     moniteurs : moniteurReducer,
-    vehicules : vehiculeReducer
+    vehicules : vehiculeReducer,
+    form : ReducerForm
 });
 
 export default rootReducer;

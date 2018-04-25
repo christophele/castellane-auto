@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getClients, deleteClient} from '../actions/index';
 import ClientListItem from '../components/ClientListItem';
+import {Link} from 'react-router';
 
 class ClientList extends Component {
     componentWillMount() {
@@ -30,6 +31,14 @@ class ClientList extends Component {
         return (
             <div>
                 <h1>Liste des clients</h1>
+
+                {/* bouton ajouter un client */}
+                <div className="button-add">
+                    <Link to={'create-client'}>
+                        <button className="btn btn-primary btn-circle"> + </button>
+                    </Link>
+                </div>
+
                 {/* tableau pour afficher les lignes */}
                 <table className="table table-hover">
                     <thead>
