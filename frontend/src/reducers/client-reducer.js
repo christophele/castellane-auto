@@ -15,7 +15,11 @@ export default function(state = [], action) {
                 } else {
                     return true; // retourne la valeur d'itération (client)
                 }
-            })
+            });
+        case ACTION_TYPES.POST_CLIENT:
+            // retourne le state en lui ajoutant action.payload (ici, un nouveau client)
+            return [...state, action.payload];
+        default:
     }
     /* si ça ne concerne pas ce reducer, on apporte aucune modif */
     return state;

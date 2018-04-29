@@ -5,6 +5,7 @@ const MoniteurListItem = (props) => {
     return (
         // on retourne une ligne de tableau avec 4 colonnes
         <tr>
+            <td>{moniteur.nummoniteur}</td>
             <td>{moniteur.nommoniteur}</td>
             <td>{moniteur.prenommoniteur}</td>
             <td>{moniteur.adressemoniteur}</td>

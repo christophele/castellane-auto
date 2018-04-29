@@ -1,5 +1,12 @@
-img {
-    height: 820px;
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/roboto/Roboto-Regular.eot');
+    src: local('Roboto'),
+        url('../font/roboto/Roboto-Regular.eot?iefix') format('embedded-opentype'),
+        url('../font/roboto/Roboto-Regular.woff2') format('woff2'),
+        url('../font/roboto/Roboto-Regular.woff2') format('woff2'),
+        url('../font/roboto/Roboto-Regular.woff') format('woff'),
+        url('../font/roboto/Roboto-Regular.ttf') format('ttf');
 }
 
 .button-add {
@@ -24,4 +31,14 @@ img {
 
 .button-space{
   padding-right:30px;
+}
+
+body {
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+}
+
+.contact-form {
+    padding: 90px 0;
 }

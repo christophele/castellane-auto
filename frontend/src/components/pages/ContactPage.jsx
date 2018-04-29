@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
+import NavbarPage from '../NavbarPage';
+import FooterPage from '../FooterPage';
+import MessageForm from '../../containers/MessageForm';
 
 class ContactPage extends Component {
     render() {
         return (
             <div>
-                <p> Page de contact </p>
+                <NavbarPage />
+                <MessageForm />
+                <FooterPage />
             </div>
         )
     }

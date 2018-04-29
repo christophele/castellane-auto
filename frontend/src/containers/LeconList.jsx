@@ -6,6 +6,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getLecons} from '../actions/index';
 import LeconListItem from '../components/LeconListItem';
+import {Card, CardBody, Table} from 'mdbreact';
+
+
+import NavbarPage from '../components/NavbarPage';
 
 class LeconList extends Component {
     componentWillMount() {
@@ -27,21 +31,31 @@ class LeconList extends Component {
         console.log(this.props.lecons);
         return (
             <div>
-                <p>Liste des leçons</p>
-                {/* tableau pour afficher les lignes */}
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Date de leçon</th>
-                            <th>Heure de leçon</th>
-                            <th>Tarif de l'heure en euros</th>
-                            <th>Test</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderLecons()}
-                    </tbody>
-                </table>
+                <NavbarPage />
+                <div className="container-fluid">
+                    <div className="row pb-3">
+                        <div className="col-md-12">
+                            <Card className="mt-4">
+                                <CardBody>
+                                    <h2 className="h2-responsive">Liste des leçons</h2>
+                                    <table className="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Date de leçon</th>
+                                                <th>Heure de leçon</th>
+                                                <th>Tarif de l'heure en euros</th>
+                                                <th>Test</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderLecons()}
+                                        </tbody>
+                                    </table>
+                                </CardBody>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

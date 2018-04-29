@@ -25,14 +25,15 @@ router.get('/:idVehicule', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     const vehicule = {
+		numvehicule : req.body.numvehicule,
 		marque : req.body.marque,
 		immatriculation : req.body.immatriculation,
 		model : req.body.model,
         date_achat : req.body.date_achat,
     };
 
-    if (vehicule.marque && vehicule.immatriculation && vehicule.modele && vehicule.date_achat) {
-        connection.query('INSERT INTO vehicule (marque, immatriculation, model, date_achat) values (' + "'" + vehicule.marque + "'" + "," + "'" + vehicule.immatriculation + "'" + "," + "'" + vehicule.model + "'" + "," + "'" + vehicule.date_achat + "'" + ")", (err, data) => {
+    if (vehicule.numvehicule && vehicule.marque && vehicule.immatriculation && vehicule.model && vehicule.date_achat) {
+        connection.query('INSERT INTO vehicule (numvehicule, marque, immatriculation, model, date_achat) values (' + "'" + vehicule.numvehicule + "'" + "," + "'" + vehicule.marque + "'" + "," + "'" + vehicule.immatriculation + "'" + "," + "'" + vehicule.model + "'" + "," + "'" + vehicule.date_achat + "'" + ")", (err, data) => {
             if (err) {
 				console.log(err);
 				res.status(500).json({err});
@@ -49,8 +50,8 @@ router.post('/', (req, res, next) => {
 	}
 });
 
-router.delete('/:idVehicule', (req, res, next) => {
-	const idVehicule = req.params.idVehicule;
+router.delete('/:vehiculeId', (req, res, next) => {
+	const idVehicule = req.params.vehiculeId;
 	if (idVehicule) {
 		connection.query('DELETE FROM vehicule WHERE numvehicule = ' + idVehicule, (err, data) => {
 			if (err) {

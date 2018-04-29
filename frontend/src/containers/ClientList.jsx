@@ -6,10 +6,13 @@ import {bindActionCreators} from 'redux';
 import {getClients, deleteClient} from '../actions/index';
 import ClientListItem from '../components/ClientListItem';
 import {Link} from 'react-router';
+import {Card, CardBody, Table, Fa} from 'mdbreact';
+import NavbarPage from '../components/NavbarPage';
+import Button from '../components/Button';
 
 class ClientList extends Component {
     componentWillMount() {
-        this.props.getClients()
+        this.props.getClients();
     }
 
     renderClients() {
@@ -21,7 +24,7 @@ class ClientList extends Component {
         }
     }
 
-    // supprime le post en prenant l'id du client
+    // supprime le client en prenant l'id du client
     deleteClientCallBack(client){
         this.props.deleteClient(client.numclient);
     }
@@ -30,34 +33,43 @@ class ClientList extends Component {
         console.log(this.props.clients);
         return (
             <div>
-                <h1>Liste des clients</h1>
+                <NavbarPage />
+                <div className="container-fluid">
+                    <div className="row pb-3">
+                        <div className="col-md-12">
+                            <Card className="mt-4">
+                                <CardBody>
+                                    <h2 className="h2-responsive">Liste des clients&nbsp;
+                                        <Link to={'create-client'}>
+                                            <Button><Fa icon="plus"/></Button>
+                                        </Link>
+                                    </h2>
 
-                {/* bouton ajouter un client */}
-                <div className="button-add">
-                    <Link to={'create-client'}>
-                        <button className="btn btn-primary btn-circle"> + </button>
-                    </Link>
+                                    <Table className="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>Adresse</th>
+                                                <th>Date de naissance</th>
+                                                <th>Téléphone</th>
+                                                <th>Mail</th>
+                                                <th>Date d'inscription</th>
+                                                <th>Statut</th>
+                                                <th>Mot de passe</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderClients()}
+                                        </tbody>
+                                    </Table>
+                                </CardBody>
+                            </Card>
+                        </div>
+                    </div>
                 </div>
-
-                {/* tableau pour afficher les lignes */}
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Adresse</th>
-                            <th>Date de naissance</th>
-                            <th>Téléphone</th>
-                            <th>Mail</th>
-                            <th>Date d'inscription</th>
-                            <th>Statut</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderClients()}
-                    </tbody>
-                </table>
             </div>
         )
     }

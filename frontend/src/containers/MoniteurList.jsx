@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getMoniteurs} from '../actions/index';
 import MoniteurListItem from '../components/MoniteurListItem';
+import {Card, CardBody, Table} from 'mdbreact';
+import NavbarPage from '../components/NavbarPage';
 
 class MoniteurList extends Component {
     componentWillMount() {
@@ -22,23 +24,35 @@ class MoniteurList extends Component {
         console.log(this.props.moniteurs);
         return (
             <div>
-                <h1>Liste des moniteurs</h1>
-                {/* tableau pour afficher les lignes */}
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Adresse</th>
-                            <th>Téléphone</th>
-                            <th>Mail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderMoniteurs()}
-                    </tbody>
-                </table>
+                <NavbarPage />
+                <div className="container-fluid">
+                    <div className="row pb-3">
+                        <div className="col-md-12">
+                            <Card className="mt-4">
+                                <CardBody>
+                                    <h2 className="h2-responsive">Liste des moniteurs</h2>
+                                    <Table className="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>Adresse</th>
+                                                <th>Téléphone</th>
+                                                <th>Mail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderMoniteurs()}
+                                        </tbody>
+                                    </Table>
+                                </CardBody>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         )
     }
 }

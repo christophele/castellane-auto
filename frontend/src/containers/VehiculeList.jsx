@@ -1,8 +1,14 @@
+// La liste de tous les vehicules
+
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getVehicules} from '../actions/index';
+import {getVehicules, deleteVehicule} from '../actions/index';
 import VehiculeListItem from '../components/VehiculeListItem';
+import {Link} from 'react-router';
+import NavbarPage from '../components/NavbarPage';
+import {Card, CardBody, Table, Fa} from 'mdbreact';
+import Button from '../components/Button';
 
 class VehiculeList extends Component {
     componentWillMount() {
@@ -13,28 +19,52 @@ class VehiculeList extends Component {
         const {vehicules} = this.props;
         if(vehicules) {
             return vehicules.map((vehicule) => {
-                return <VehiculeListItem key={vehicule.numvehicule} vehicule={vehicule}/>
+                return <VehiculeListItem key={vehicule.numvehicule} vehicule={vehicule} deleteVehiculeCallBack={(vehicule) => this.deleteVehiculeCallBack(vehicule)}/>
             })
         }
     }
+
+    deleteVehiculeCallBack(vehicule) {
+        this.props.deleteVehicule(vehicule.numvehicule);
+    }
+
     render() {
         console.log(this.props.vehicules);
         return (
             <div>
-                <h1>Liste des véhicules</h1>
-                <table className="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>Marque</th>
-                            <th>Immatriculation</th>
-                            <th>Modèle</th>
-                            <th>Date d'achat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderVehicules()}
-                    </tbody>
-                </table>
+                <NavbarPage />
+                <div className="container-fluid">
+                    <div className="row pb-3">
+                        <div className="col-md-12">
+                            <Card>
+                                <CardBody>
+                                    <h2 className="h2-responsive">Liste des véhicules&nbsp;
+                                        <Link to={'create-vehicule'}>
+                                            <Button><Fa icon="plus"/></Button>
+                                        </Link>
+                                    </h2>
+
+                                    <table className="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Marque</th>
+                                                <th>Immatriculation</th>
+                                                <th>Modèle</th>
+                                                <th>Date d'achat</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {this.renderVehicules()}
+                                        </tbody>
+                                    </table>
+
+                                </CardBody>
+                            </Card>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -47,7 +77,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({getVehicules}, dispatch),
+    ...bindActionCreators({getVehicules, deleteVehicule}, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VehiculeList);

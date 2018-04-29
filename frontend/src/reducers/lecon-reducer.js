@@ -7,6 +7,7 @@ export default function(state = [], action) {
     switch(action.type) {
         case ACTION_TYPES.GET_LECONS:
             return action.payload; // retourne le payload avec tt les lecons
+        default:
     }
     /* si ça ne concerne pas ce reducer, on apporte aucune modif */
     return state;
