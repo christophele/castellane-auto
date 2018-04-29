@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-require('./Waves.css');
+require('../css/waves.css');
 
 class Waves extends React.Component {
 
