@@ -1,6 +1,6 @@
 import React from 'react';
 import {Col, Container, Row, Footer} from 'mdbreact';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 
 class FooterPage extends React.Component {
     render() {
@@ -22,13 +22,13 @@ class FooterPage extends React.Component {
                                     <a href="#!">Qui sommes-nous ?</a>
                                 </li>
                                 <li className="list-unstyled">
-                                    <a href="#!">Link 2</a>
+                                    <a href="#!">Infos pratiques</a>
                                 </li>
                                 <li className="list-unstyled">
                                     <a href="#!">Link 3</a>
                                 </li>
                                 <li className="list-unstyled">
-                                    <Link to={'contact'}>Contact</Link>
+                                    <Link to={'/contact'}>Contact</Link>
                                 </li>
                             </ul>
                         </Col>
@@ -38,7 +38,7 @@ class FooterPage extends React.Component {
                     <Container fluid="fluid">
                         &copy; {(new Date().getFullYear())}
                         &nbsp;Copyright :&nbsp;
-                        <a href="#">WebAppLab</a>
+                        <a href="#!">WebAppLab</a>
                     </Container>
                 </div>
             </Footer>

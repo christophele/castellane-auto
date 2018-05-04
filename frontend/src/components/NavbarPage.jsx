@@ -6,17 +6,17 @@ import {
     NavbarToggler,
     Collapse,
     NavItem,
-    NavLink,
     Dropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
-    Fa
+    Fa,
 } from 'mdbreact';
-import {Link} from 'react-router';
 import Waves from './Waves';
+import {connect} from 'react-redux';
+import {Link, NavLink} from 'react-router-dom';
 
-class NavbarPage extends React.Component {
+class NavbarPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,41 +40,97 @@ class NavbarPage extends React.Component {
         });
     }
 
+    navbarAdminLink() {
+        if(this.props.authenticated) {
+            return [
+                <NavbarNav left="left">
+                    <NavItem>
+                        <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='#' style={{color:'black'}}>Permis</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/panel-admin' style={{fontWeight: 'bold', color:'black'}}>Administration</NavLink>
+                    </NavItem>
+                </NavbarNav>
+            ];
+        }
+        return [
+            <NavbarNav left="left">
+                <NavItem>
+                    <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink to='#' style={{color:'black'}}>Permis</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
+                </NavItem>
+            </NavbarNav>
+        ]
+    }
+
+    navbarSigninLink() {
+        if(this.props.authenticated) {
+            return [
+                <NavbarNav right="right">
+                    <NavItem>
+                        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                            <DropdownToggle nav="nav" caret="caret"><Fa icon="user"/>&nbsp;Profil&nbsp;</DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem href="/deconnexion">Déconnexion</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </NavItem>
+                </NavbarNav>
+            ];
+        }
+        return [
+            <NavbarNav right="right">
+                <NavItem>
+                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                        <DropdownToggle nav="nav" caret="caret"><Fa icon="user"/>&nbsp;Connexion&nbsp;</DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem href="/connexion">Entreprise</DropdownItem>
+                            <DropdownItem href="/connexion-client">Client</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
+                </NavItem>
+            </NavbarNav>
+        ];
+    }
+
     render() {
         return (
+            // <nav className="navbar">
+            //     <div className="container">
+            //         <Link to='/'><span className="brand">Authentification</span></Link>
+            //     </div>
+            //     {this.navbarLink()}
+            // </nav>
             <Navbar light color="blue-grey lighten-3" expand="md" scrolling="scrolling">
-                <NavbarBrand href="/">
-                    <strong>Castellane Auto</strong>
+                <NavbarBrand style={{fontWeight: 'bold'}} href="/">
+                    Castellane Auto
                 </NavbarBrand>
                 {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick}/>}
                 <Collapse isOpen={this.state.collapse} navbar="navbar">
-                    <NavbarNav left="left">
-                        <NavItem>
-                            <Link to="/">Accueil</Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to='#'>Permis</Link>
-                        </NavItem>
-                        <NavItem>
-                            <Link to="/contact">Contact</Link>
-                        </NavItem>
 
-                    </NavbarNav>
-                    <NavbarNav right="right">
-                        <NavItem>
-                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                                <DropdownToggle nav="nav" caret="caret"><Fa icon="user"/></DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem href="#">Connexion client</DropdownItem>
-                                    <DropdownItem href="#">Connexion entreprise</DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
-                        </NavItem>
-                    </NavbarNav>
+                    {this.navbarAdminLink()}
+                    {this.navbarSigninLink()}
                 </Collapse>
             </Navbar>
         );
     }
 }
 
-export default NavbarPage;
+function mapStateToProps(state) {
+    return {
+        authenticated: state.auth.authenticated
+    };
+}
+
+export default connect(mapStateToProps)(NavbarPage);

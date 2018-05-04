@@ -10,17 +10,17 @@ const API_END_POINT = 'http://localhost:3002';
 /************* LECON **************/
 /**********************************/
 
-export function getLecons(){
-    return function (dispatch){
+export function getLecons() {
+    return function(dispatch) {
         axios.get(`${API_END_POINT}/lecons`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_LECONS, payload: response.data})
         })
     }
 }
 
-export function getLeconById(id){
-    return function (dispatch){
-        axios.get(`${API_END_POINT}/lecons/${id}`).then((response) =>{
+export function getLeconById(id) {
+    return function(dispatch) {
+        axios.get(`${API_END_POINT}/lecons/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_LECON, payload: response.data})
         })
     }
@@ -30,8 +30,8 @@ export function getLeconById(id){
 /************* CLIENT *************/
 /**********************************/
 
-export function getClients(){
-    return function (dispatch){
+export function getClients() {
+    return function(dispatch) {
         axios.get(`${API_END_POINT}/clients`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_CLIENTS, payload: response.data})
         })
@@ -55,8 +55,8 @@ export function deleteClient(id) {
 }
 
 export function createClient(client) {
-    return function (dispatch) {
-        axios.post(`${API_END_POINT}/clients/`, {
+    return function(dispatch) {
+        axios.post(`${API_END_POINT}/clients`, {
             nomclient: client.nomclient,
             prenomclient: client.prenomclient,
             adresseclient: client.adresseclient,
@@ -64,7 +64,7 @@ export function createClient(client) {
             telephoneclient: client.telephoneclient,
             mailclient: client.mailclient,
             dateinscriptionclient: client.dateinscriptionclient,
-            typeclient : client.typeclient,
+            typeclient: client.typeclient,
             mdpclient: client.mdpclient
         }).then((response) => {
             dispatch({type: ACTION_TYPES.POST_CLIENT, payload: response.data})
@@ -76,8 +76,8 @@ export function createClient(client) {
 /************ MONITEUR ************/
 /**********************************/
 
-export function getMoniteurs(){
-    return function (dispatch){
+export function getMoniteurs() {
+    return function(dispatch) {
         axios.get(`${API_END_POINT}/moniteurs`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_MONITEURS, payload: response.data})
         }).catch((error) => {
@@ -86,22 +86,60 @@ export function getMoniteurs(){
     }
 }
 
+export function signInMoniteur({
+    mailmoniteur,
+    mdpmoniteur
+}, history) {
+    return async (dispatch) => {
+        try {
+            console.log(mailmoniteur);
+            console.log(mdpmoniteur);
+            const res = await axios.post(`${API_END_POINT}/moniteurs/connexion`, {mailmoniteur, mdpmoniteur});
+
+            dispatch({type: ACTION_TYPES.AUTH_MONITEUR});
+            localStorage.setItem('user', res.data.token);
+            history.push('/clients');
+        } catch (error) {
+            dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Invalid email or password'});
+        }
+    };
+}
+
+export function signOutMoniteur() {
+    localStorage.clear();
+    return {
+        type: ACTION_TYPES.UNAUTH_MONITEUR
+    };
+}
+
+// export function signinMoniteur(payload) {
+//     return function (dispatch) {
+//         axios.post('http://localhost:3002/moniteurs/connexion', {mailmoniteur: payload.mailmoniteur, mdpmoniteur: payload.mdpmoniteur}).then((response) => {
+//             dispatch({type: ACTION_TYPES.AUTH_MONITEUR});
+//             localStorage.setItem('moniteur', response.data.token);
+//             this.props.history.push('/clients');
+//         }).catch((error) => {
+//             dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Adresse email ou mot de passe incorrect.'});
+//         });
+//     }
+// }
+
 /**********************************/
 /************ VEHICULE ************/
 /**********************************/
 
 export function getVehicules() {
-    return function (dispatch) {
+    return function(dispatch) {
         axios.get(`${API_END_POINT}/vehicules`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_VEHICULES, payload: response.data})
         })
     }
 }
 
-export function createVehicule(vehicule){
-    return function (dispatch) {
+export function createVehicule(vehicule) {
+    return function(dispatch) {
         axios.post(`${API_END_POINT}/vehicules/`, {
-            numvehicule : vehicule.numvehicule,
+            numvehicule: vehicule.numvehicule,
             marque: vehicule.marque,
             immatriculation: vehicule.immatriculation,
             model: vehicule.model,
@@ -125,17 +163,17 @@ export function deleteVehicule(id) {
 /**********************************/
 
 export function getMessages() {
-    return function (dispatch) {
+    return function(dispatch) {
         axios.get(`${API_END_POINT}/messages`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_MESSAGES, payload: response.data})
         })
     }
 }
 
-export function createMessage(message){
-    return function (dispatch) {
+export function createMessage(message) {
+    return function(dispatch) {
         axios.post(`${API_END_POINT}/messages/`, {
-            prenom : message.prenom,
+            prenom: message.prenom,
             nom: message.nom,
             email: message.email,
             sujet: message.sujet,

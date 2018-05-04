@@ -6,7 +6,8 @@ import clientReducer from './client-reducer';
 import moniteurReducer from './moniteur-reducer';
 import vehiculeReducer from './vehicule-reducer';
 import messageReducer from './message-reducer';
-import {reducer as ReducerForm} from 'redux-form';
+import authReducer from './auth-reducer';
+import {reducer as formReducer} from 'redux-form';
 
 /* on récupère chaque reducer qu'on stocke dans une variable et qui devient un bout de state récupérable grâce à la fonction mapStateToProps */
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     moniteurs : moniteurReducer,
     vehicules : vehiculeReducer,
     messages : messageReducer,
-    form : ReducerForm
+    auth: authReducer,
+    form : formReducer
 });
 
 export default rootReducer;

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getClients, deleteClient} from '../actions/index';
 import ClientListItem from '../components/ClientListItem';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
 import NavbarPage from '../components/NavbarPage';
 import Button from '../components/Button';
@@ -14,7 +14,7 @@ class ClientList extends Component {
     componentWillMount() {
         this.props.getClients();
     }
-
+    
     renderClients() {
         const {clients} = this.props;
         if(clients){
@@ -30,7 +30,6 @@ class ClientList extends Component {
     }
 
     render() {
-        console.log(this.props.clients);
         return (
             <div>
                 <NavbarPage />
@@ -40,12 +39,12 @@ class ClientList extends Component {
                             <Card className="mt-4">
                                 <CardBody>
                                     <h2 className="h2-responsive">Liste des clients&nbsp;
-                                        <Link to={'create-client'}>
+                                        <Link to={'/create-client'}>
                                             <Button><Fa icon="plus"/></Button>
                                         </Link>
                                     </h2>
 
-                                    <Table className="table table-hover">
+                                    <table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -64,7 +63,7 @@ class ClientList extends Component {
                                         <tbody>
                                             {this.renderClients()}
                                         </tbody>
-                                    </Table>
+                                    </table>
                                 </CardBody>
                             </Card>
                         </div>

@@ -7,7 +7,7 @@ import {getMessages, deleteMessage} from '../actions/index';
 import MessageListItem from '../components/MessageListItem';
 import {Card, CardBody, Table} from 'mdbreact';
 import NavbarPage from '../components/NavbarPage';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 
 class MessageList extends Component {
     componentWillMount() {

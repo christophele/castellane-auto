@@ -4,6 +4,7 @@ import Button from '../Button';
 import CardImage from '../CardImage';
 import FooterPage from '../FooterPage';
 import NavbarPage from '../NavbarPage';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class AccueilPage extends Component {
     constructor(props) {

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {getVehicules, deleteVehicule} from '../actions/index';
 import VehiculeListItem from '../components/VehiculeListItem';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import NavbarPage from '../components/NavbarPage';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
 import Button from '../components/Button';
@@ -34,17 +34,17 @@ class VehiculeList extends Component {
             <div>
                 <NavbarPage />
                 <div className="container-fluid">
-                    <div className="row pb-3">
+                    <div className="row ">
                         <div className="col-md-12">
-                            <Card>
+                            <Card className="mt-4">
                                 <CardBody>
                                     <h2 className="h2-responsive">Liste des véhicules&nbsp;
-                                        <Link to={'create-vehicule'}>
+                                        <Link to={'/create-vehicule'}>
                                             <Button><Fa icon="plus"/></Button>
                                         </Link>
                                     </h2>
 
-                                    <table className="table table-hover">
+                                    <Table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -58,7 +58,7 @@ class VehiculeList extends Component {
                                         <tbody>
                                             {this.renderVehicules()}
                                         </tbody>
-                                    </table>
+                                    </Table>
 
                                 </CardBody>
                             </Card>

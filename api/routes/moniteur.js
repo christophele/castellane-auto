@@ -26,7 +26,8 @@ router.get('/:idMoniteur', (req, res, next) => {
 
 router.post('/connexion', (req, res, next) => { // CONNEXION
     const mailmoniteur = req.body.mailmoniteur;
-    const mdpmoniteur = sha1(req.body.mdpmoniteur);
+    const mdpmoniteur = req.body.mdpmoniteur;
+
     if (mailmoniteur && mdpmoniteur) {
         connection.query('SELECT * FROM moniteur WHERE mailmoniteur = ' + "'" + mailmoniteur + "'" + ' and mdpmoniteur = ' + "'" + mdpmoniteur + "'", (err, data) => {
             if (err) {
