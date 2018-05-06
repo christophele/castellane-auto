@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import Moment from 'react-moment';
 
 const LeconListItem = (props) => {
     // on reçoit une leçon dans les props
@@ -8,7 +9,7 @@ const LeconListItem = (props) => {
         // on retourne une ligne de tableau avec 4 colonnes
         <tr>
             <td>{lecon.numlecon}</td>
-            <td>{lecon.datelecon}</td>
+            <td><Moment format="DD-MM-YYYY">{lecon.datelecon}</Moment></td>
             <td>{lecon.heurelecon}</td>
             <td>{lecon.tarifheure}</td>
             <td>{lecon.id_demande}</td>

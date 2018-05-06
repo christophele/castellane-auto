@@ -59,7 +59,7 @@ class ClientForm extends Component {
                                 name="datedenaissanceclient"
                                 component="input"
                                 type="text"
-                                placeholder="Date de naissance (YYYY-MM-DD)"
+                                placeholder="Date de naissance (AAAA-MM-JJ)"
                             />
                         </div>
                         <div className="form-group">
@@ -83,7 +83,7 @@ class ClientForm extends Component {
                                 name="dateinscriptionclient"
                                 component="input"
                                 type="text"
-                                placeholder="Date d'inscription (YYYY-MM-DD)"
+                                placeholder="Date d'inscription (AAAA-MM-JJ)"
                             />
                         </div>
                         <div className="form-group">

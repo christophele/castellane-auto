@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import Moment from 'react-moment';
 
 const VehiculeListItem = (props) => {
     const {vehicule} = props;
@@ -10,7 +11,7 @@ const VehiculeListItem = (props) => {
             <td>{vehicule.marque}</td>
             <td>{vehicule.immatriculation}</td>
             <td>{vehicule.model}</td>
-            <td>{vehicule.date_achat}</td>
+            <td><Moment format="DD-MM-YYYY">{vehicule.date_achat}</Moment></td>
             <td><Button color="danger" onClick={() => deleteVehicule(vehicule)}>Supprimer</Button></td>
         </tr>
     )

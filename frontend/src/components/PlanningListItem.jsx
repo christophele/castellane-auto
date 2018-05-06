@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import Moment from 'react-moment';
 
 const PlanningListItem = (props) => {
     // on reçoit un planning dans les props
@@ -12,7 +13,7 @@ const PlanningListItem = (props) => {
             <td>{planning.num_lecon}</td>
             <td>{planning.nom_moniteur}</td>
             <td>{planning.etat_p}</td>
-            <td>{planning.date_lecon}</td>
+            <td><Moment format="DD-MM-YYYY">{planning.date_lecon}</Moment></td>
             <td>{planning.heure_debut}</td>
             <td>{planning.heure_fin}</td>
             <td><Button color="danger" onClick={() => deletePlanning(planning)}>Supprimer</Button></td>
