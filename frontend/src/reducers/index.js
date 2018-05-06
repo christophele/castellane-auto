@@ -6,6 +6,7 @@ import clientReducer from './client-reducer';
 import moniteurReducer from './moniteur-reducer';
 import vehiculeReducer from './vehicule-reducer';
 import messageReducer from './message-reducer';
+import planningReducer from './planning-reducer';
 import authReducer from './auth-reducer';
 import {reducer as formReducer} from 'redux-form';
 
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     moniteurs : moniteurReducer,
     vehicules : vehiculeReducer,
     messages : messageReducer,
+    plannings : planningReducer,
     auth: authReducer,
     form : formReducer
 });

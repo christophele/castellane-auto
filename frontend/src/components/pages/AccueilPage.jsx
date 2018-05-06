@@ -5,6 +5,13 @@ import CardImage from '../CardImage';
 import FooterPage from '../FooterPage';
 import NavbarPage from '../NavbarPage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Carousel1 from '../../img/amg_1.jpg';
+import Carousel2 from '../../img/amg_2.jpg';
+import Carousel3 from '../../img/h2r.jpg';
+import Carousel4 from '../../img/tmax_1.jpg';
+import Card1 from '../../img/amg_3.jpg';
+import Card2 from '../../img/gp_1.jpg';
+import Card3 from '../../img/tmax_2.jpg';
 
 class AccueilPage extends Component {
     constructor(props) {
@@ -49,7 +56,7 @@ class AccueilPage extends Component {
                     <CarouselInner>
                         <CarouselItem itemId="1">
                             <div className="view hm-black-light">
-                                <img className="d-block w-100" src="http://ngn-mag.com/image/wallpaper/fond-ecran-moto-91.jpg" alt="permis_portee_de_main"/>
+                                <img className="d-block w-100" src={Carousel1} alt={Carousel1} />
                                 <div className="mask"></div>
                             </div>
                             <CarouselCaption>
@@ -59,7 +66,7 @@ class AccueilPage extends Component {
                         </CarouselItem>
                         <CarouselItem itemId="2">
                             <div className="view hm-black-light">
-                                <img className="d-block w-100" src="https://image.noelshack.com/fichiers/2018/02/7/1515961531-h2r-3.jpg" alt="permis_2_roues"/>
+                                <img className="d-block w-100" src={Carousel3} alt={Carousel3} />
                                 <div className="mask"></div>
                             </div>
                             <CarouselCaption>
@@ -69,7 +76,7 @@ class AccueilPage extends Component {
                         </CarouselItem>
                         <CarouselItem itemId="3">
                             <div className="view hm-black-slight">
-                                <img className="d-block w-100" src="https://image.noelshack.com/fichiers/2018/04/5/1516992210-amg-2.jpg" alt="permis_voiture"/>
+                                <img className="d-block w-100" src={Carousel2} alt={Carousel2} />
                                 <div className="mask"></div>
                             </div>
                             <CarouselCaption>
@@ -79,7 +86,7 @@ class AccueilPage extends Component {
                         </CarouselItem>
                         <CarouselItem itemId="4">
                             <div className="view hm-black-light">
-                                <img className="d-block w-100" src="https://image.noelshack.com/fichiers/2018/04/6/1517052675-tmax-2.jpg" alt="formation_et_stage"/>
+                                <img className="d-block w-100" src={Carousel4} alt={Carousel4} />
                                 <div className="mask"></div>
                             </div>
                             <CarouselCaption>
@@ -110,7 +117,7 @@ class AccueilPage extends Component {
                     <div className="row mt-5">
                         <div className="col-md-4">
                             <Card>
-                                <CardImage className="img-fluid" src="https://image.noelshack.com/fichiers/2018/04/6/1517052180-amg-3.jpg"/>
+                                <CardImage className="img-fluid" src={Card1} alt={Card1} />
                                 <CardBody>
                                     <CardTitle>Permis Voiture</CardTitle>
                                     <hr/>
@@ -121,7 +128,7 @@ class AccueilPage extends Component {
                         </div>
                         <div className="col-md-4">
                             <Card>
-                                <CardImage className="img-fluid" src="https://image.noelshack.com/fichiers/2018/04/6/1517052411-gp-2.jpg"/>
+                                <CardImage className="img-fluid" src={Card2} alt={Card2} />
                                 <CardBody>
                                     <CardTitle>Permis Moto</CardTitle>
                                     <hr/>
@@ -132,7 +139,7 @@ class AccueilPage extends Component {
                         </div>
                         <div className="col-md-4">
                             <Card>
-                                <CardImage className="img-fluid" src="https://image.noelshack.com/fichiers/2018/04/6/1517052529-tmax.jpg"/>
+                                <CardImage className="img-fluid" src={Card3} alt={Card3} />
                                 <CardBody>
                                     <CardTitle>Stage & Formation</CardTitle>
                                     <hr/>

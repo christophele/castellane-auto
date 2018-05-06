@@ -20,17 +20,15 @@ class VehiculeForm extends Component {
         console.log(fields);
         return (
             <div>
-                <NavbarPage />
                 <div className="container">
-                    <form className="contact-form" onSubmit={handleSubmit(this.createVehicule.bind(this))}>
+                    <form className="form" onSubmit={handleSubmit(this.createVehicule.bind(this))}>
                         <p className="h3 text-center mb-4">Ajout d'un véhicule</p>
                         <div className="form-group">
                             <Field
                                 name="numvehicule"
                                 component="input"
-                                type="text"
+                                type="number"
                                 placeholder="Numéro du véhicule"
-                                {...fields.numvehicule}
                             />
                         </div>
                         <div className="form-group">
@@ -38,8 +36,7 @@ class VehiculeForm extends Component {
                                 name="marque"
                                 component="input"
                                 type="text"
-                                placeholder="Nom"
-                                {...fields.marque}
+                                placeholder="Marque"
                             />
                         </div>
                         <div className="form-group">
@@ -48,7 +45,6 @@ class VehiculeForm extends Component {
                                 component="input"
                                 type="text"
                                 placeholder="Immatriculation"
-                                {...fields.immatriculation}
                             />
                         </div>
                         <div className="form-group">
@@ -56,8 +52,7 @@ class VehiculeForm extends Component {
                                 name="model"
                                 component="input"
                                 type="text"
-                                placeholder="Immatriculation"
-                                {...fields.model}
+                                placeholder="Modèle"
                             />
                         </div>
                         <div className="form-group mb-4">
@@ -65,35 +60,9 @@ class VehiculeForm extends Component {
                                 name="date_achat"
                                 component="input"
                                 type="text"
-                                placeholder="Date d'achat"
-                                {...fields.date_achat}
+                                placeholder="Date d'achat (AAAA-MM-JJ)"
                             />
                         </div>
-                        {/* <div className="form-group">
-                            <label>Numéro à assigner</label>
-                            <input className="form-control" type="text" {...fields.numvehicule} />
-                            <div></div>
-                        </div>
-                        <div className="form-group">
-                            <label>Marque</label>
-                            <input className="form-control" type="text" {...fields.marque} />
-                            <div></div>
-                        </div>
-                        <div className="form-group">
-                            <label>Immatriculation</label>
-                            <input className="form-control" type="text" {...fields.immatriculation} />
-                            <div></div>
-                        </div>
-                        <div className="form-group">
-                            <label>Modèle</label>
-                            <input className="form-control" type="text" {...fields.model} />
-                            <div></div>
-                        </div>
-                        <div className="form-group">
-                            <label>Date d'achat</label>
-                            <input className="form-control" type="text" {...fields.date_achat} />
-                            <div></div>
-                        </div> */}
                         <Link to={'/vehicules'}>
                             <Button color="danger">Retour</Button>
                         </Link>
@@ -107,7 +76,7 @@ class VehiculeForm extends Component {
     createVehicule(vehicule) {
         this.props.createVehicule(vehicule);
         // après la création du client, retourne à la page /vehicules
-        this.props.history.push('/vehicules');
+        this.props.history.push('/create-vehicule');
     }
 }
 

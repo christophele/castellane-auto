@@ -32,7 +32,6 @@ class VehiculeList extends Component {
         console.log(this.props.vehicules);
         return (
             <div>
-                <NavbarPage />
                 <div className="container-fluid">
                     <div className="row ">
                         <div className="col-md-12">

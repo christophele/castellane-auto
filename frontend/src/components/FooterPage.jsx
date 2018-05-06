@@ -25,9 +25,6 @@ class FooterPage extends React.Component {
                                     <a href="#!">Infos pratiques</a>
                                 </li>
                                 <li className="list-unstyled">
-                                    <a href="#!">Link 3</a>
-                                </li>
-                                <li className="list-unstyled">
                                     <Link to={'/contact'}>Contact</Link>
                                 </li>
                             </ul>

@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/connexion', (req, res, next) => { // CONNEXION
     const mailclient = req.body.mailclient;
-    const mdpclientclient = sha1(req.body.mdpclientclient);
+    const mdpclient = req.body.mdpclient;
     if (mailclient && mdpclient) {
         connection.query('SELECT * FROM client WHERE mailclient = ' + "'" + mailclient + "'" + ' and mdpclient = ' + "'" + mdpclient + "'", (err, data) => {
             if (err) {
@@ -41,7 +41,7 @@ router.post('/inscription', (req, res, next) => { // INSCRIPTION
         datedenaissanceclient: req.body.datedenaissanceclient,
         telephoneclient: req.body.telephoneclient,
         mailclient: req.body.mailclient,
-        mdpclient: sha1(req.body.mdpclient)
+        mdpclient: req.body.mdpclient
     };
 
     if (client.nomclient && client.prenomclient && client.adresseclient && client.datedenaissanceclient && client.telephoneclient && client.mailclient && client.mdpclient) {

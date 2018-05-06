@@ -14,12 +14,12 @@ class ClientList extends Component {
     componentWillMount() {
         this.props.getClients();
     }
-    
+
     renderClients() {
         const {clients} = this.props;
         if(clients){
             return clients.map((client) => {
-                return <ClientListItem key={client.numclient} client={client} deleteClientCallBack={(client) => this.deleteClientCallBack(client)}/>
+                return <ClientListItem key={client.numclient} client={client} deleteClientCallBack={(client) => this.deleteClientCallBack(client)} />
             })
         }
     }
@@ -32,7 +32,6 @@ class ClientList extends Component {
     render() {
         return (
             <div>
-                <NavbarPage />
                 <div className="container-fluid">
                     <div className="row pb-3">
                         <div className="col-md-12">

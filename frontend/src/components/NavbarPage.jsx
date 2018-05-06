@@ -15,6 +15,11 @@ import {
 import Waves from './Waves';
 import {connect} from 'react-redux';
 import {Link, NavLink} from 'react-router-dom';
+import {List, ListItem} from 'material-ui/List';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import AppBar from 'material-ui/AppBar';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class NavbarPage extends Component {
     constructor(props) {
@@ -22,8 +27,10 @@ class NavbarPage extends Component {
         this.state = {
             collapse: false,
             isWideEnough: false,
-            dropdownOpen: false
+            dropdownOpen: false,
+            open: false,
         };
+
         this.onClick = this.onClick.bind(this);
         this.toggle = this.toggle.bind(this);
     }
@@ -40,6 +47,8 @@ class NavbarPage extends Component {
         });
     }
 
+    toggleDrawer = () => this.setState({open: !this.state.open});
+
     navbarAdminLink() {
         if(this.props.authenticated) {
             return [
@@ -53,8 +62,101 @@ class NavbarPage extends Component {
                     <NavItem>
                         <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
                     </NavItem>
-                    <NavItem>
-                        <NavLink to='/panel-admin' style={{fontWeight: 'bold', color:'black'}}>Administration</NavLink>
+                    <NavItem onClick={this.toggleDrawer} style={{fontWeight: 'bold', color:'red'}}>
+                        Administration
+                            <MuiThemeProvider>
+                                <div>
+                                    <Drawer width={260} open={this.state.open}>
+                                        <AppBar className="blue-grey lighten-3" onLeftIconButtonClick={this.toggleDrawer} title="Castellane-Auto" />
+                                        <ListItem
+                                            primaryText="Gestion du planning"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/planning"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste du planning</ListItem></Link>
+                                                ,
+                                                <Link to='/create-planning'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter un planning</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion des leçons"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/lecons"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des leçons</ListItem></Link>
+                                                ,
+                                                <Link to='/create-lecon'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter une leçon</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion des clients"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/clients"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des clients</ListItem></Link>
+                                                ,
+                                                <Link to='/create-client'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter un client</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion des véhicules"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/vehicules"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des véhicules</ListItem></Link>
+                                                ,
+                                                <Link to='/create-vehicule'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter un véhicule</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion des messages"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/messages"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des messages</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion des moniteurs"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/moniteurs"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des moniteurs</ListItem></Link>
+                                                ]}
+                                        />
+                                    </Drawer>
+                                </div>
+                            </MuiThemeProvider>
                     </NavItem>
                 </NavbarNav>
             ];

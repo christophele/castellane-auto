@@ -9,7 +9,7 @@ const vehiculeRoutes = require('./api/routes/vehicule');
 const clientRoutes = require('./api/routes/client');
 const leconRoutes = require('./api/routes/lecon');
 const messageRoutes = require('./api/routes/message');
-
+const planningRoutes = require('./api/routes/planning');
 
 // middleware body-parser
 app.use(bodyParser.json());
@@ -24,5 +24,6 @@ app.use('/vehicules', vehiculeRoutes);
 app.use('/clients', clientRoutes);
 app.use('/lecons', leconRoutes);
 app.use('/messages', messageRoutes);
+app.use('/plannings', planningRoutes);
 
 module.exports = app;

@@ -18,11 +18,24 @@ export function getLecons() {
     }
 }
 
-export function getLeconById(id) {
+export function deleteLecon(id) {
     return function(dispatch) {
-        axios.get(`${API_END_POINT}/lecons/${id}`).then((response) => {
-            dispatch({type: ACTION_TYPES.GET_LECON, payload: response.data})
-        })
+        axios.delete(`${API_END_POINT}/lecons/${id}`).then((response) => {
+            dispatch({type: ACTION_TYPES.DELETE_LECON, payload: id})
+        });
+    }
+}
+
+export function createLecon(lecon) {
+    return function(dispatch) {
+        axios.post(`${API_END_POINT}/lecons/`, {
+            datelecon: lecon.datelecon,
+            heurelecon: lecon.heurelecon,
+            tarifheure: lecon.tarifheure,
+            id_demande: lecon.id_demande
+        }).then((response) => {
+            dispatch({type: ACTION_TYPES.POST_LECON, payload: response.data})
+        });
     }
 }
 
@@ -42,7 +55,7 @@ export function getClientById(id) {
     return function(dispatch) {
         axios.get(`${API_END_POINT}/clients/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_CLIENT, payload: response.data})
-        })
+        });
     }
 }
 
@@ -50,7 +63,7 @@ export function deleteClient(id) {
     return function(dispatch) {
         axios.delete(`${API_END_POINT}/clients/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES.DELETE_CLIENT, payload: id})
-        })
+        });
     }
 }
 
@@ -112,18 +125,6 @@ export function signOutMoniteur() {
     };
 }
 
-// export function signinMoniteur(payload) {
-//     return function (dispatch) {
-//         axios.post('http://localhost:3002/moniteurs/connexion', {mailmoniteur: payload.mailmoniteur, mdpmoniteur: payload.mdpmoniteur}).then((response) => {
-//             dispatch({type: ACTION_TYPES.AUTH_MONITEUR});
-//             localStorage.setItem('moniteur', response.data.token);
-//             this.props.history.push('/clients');
-//         }).catch((error) => {
-//             dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Adresse email ou mot de passe incorrect.'});
-//         });
-//     }
-// }
-
 /**********************************/
 /************ VEHICULE ************/
 /**********************************/
@@ -132,7 +133,7 @@ export function getVehicules() {
     return function(dispatch) {
         axios.get(`${API_END_POINT}/vehicules`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_VEHICULES, payload: response.data})
-        })
+        });
     }
 }
 
@@ -154,7 +155,7 @@ export function deleteVehicule(id) {
     return function(dispatch) {
         axios.delete(`${API_END_POINT}/vehicules/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES.DELETE_VEHICULE, payload: id})
-        })
+        });
     }
 }
 
@@ -166,13 +167,13 @@ export function getMessages() {
     return function(dispatch) {
         axios.get(`${API_END_POINT}/messages`).then((response) => {
             dispatch({type: ACTION_TYPES.GET_MESSAGES, payload: response.data})
-        })
+        });
     }
 }
 
 export function createMessage(message) {
     return function(dispatch) {
-        axios.post(`${API_END_POINT}/messages/`, {
+        axios.post(`${API_END_POINT}/messages`, {
             prenom: message.prenom,
             nom: message.nom,
             email: message.email,
@@ -188,6 +189,43 @@ export function deleteMessage(id) {
     return function(dispatch) {
         axios.delete(`${API_END_POINT}/messages/${id}`).then((response) => {
             dispatch({type: ACTION_TYPES.DELETE_MESSAGE, payload: id})
-        })
+        });
+    }
+}
+
+/**********************************/
+/*********** PLANNING *************/
+/**********************************/
+
+export function getPlanning() {
+    return function(dispatch) {
+        axios.get(`${API_END_POINT}/plannings`).then((response) => {
+            dispatch({type: ACTION_TYPES.GET_PLANNING, payload: response.data})
+        });
+    }
+}
+
+export function createPlanning(planning) {
+    return function (dispatch) {
+        axios.post(`${API_END_POINT}/plannings`, {
+            numclient: planning.numclient,
+            numvehicule : planning.numvehicule,
+            numlecon : planning.numlecon,
+            nummoniteur : planning.nummoniteur,
+            etatplanning : planning.etatplanning,
+            datelecon : planning.numvehicule,
+            heuredebut : planning.heuredebut,
+            heurefin : planning.heurefin
+        }).then((response) => {
+            dispatch({type: ACTION_TYPES.POST_PLANNING, payload: response.data})
+        });
+    }
+}
+
+export function deletePlanning(id) {
+    return function(dispatch) {
+        axios.delete(`${API_END_POINT}/plannings/${id}`).then((response) => {
+            dispatch({type: ACTION_TYPES.DELETE_PLANNING, payload: id})
+        });
     }
 }

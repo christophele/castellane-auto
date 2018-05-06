@@ -32,7 +32,6 @@ class MessageList extends Component {
         console.log(this.props.messages);
         return (
             <div>
-                <NavbarPage />
                 <div className="container-fluid">
                     <div className="row pb-3">
                         <div className="col-md-12">

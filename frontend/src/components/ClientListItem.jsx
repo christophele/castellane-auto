@@ -1,5 +1,7 @@
 import React from 'react';
 import Button from './Button';
+import {FormattedDate} from 'react-intl';
+
 const ClientListItem = (props) => {
     // on reçoit un client dans les props
     const {client} = props;
@@ -13,7 +15,7 @@ const ClientListItem = (props) => {
             <td>{client.datedenaissanceclient}</td>
             <td>{client.telephoneclient}</td>
             <td>{client.mailclient}</td>
-            <td>{client.dateinscriptionclient}</td>
+            <td><FormattedDate value={new Date(client.dateinscriptionclient)} year="numeric" month="numeric" day="numeric" /></td>
             <td>{client.typeclient}</td>
             <td>{client.mdpclient}</td>
             <td><Button color="danger" onClick={() => deleteClient(client)}>Supprimer</Button></td>

@@ -24,7 +24,6 @@ class MoniteurList extends Component {
         console.log(this.props.moniteurs);
         return (
             <div>
-                <NavbarPage />
                 <div className="container-fluid">
                     <div className="row pb-3">
                         <div className="col-md-12">

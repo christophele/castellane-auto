@@ -12,6 +12,7 @@ import './css/mdb.css';
 import './components/Waves';
 import {BrowserRouter} from 'react-router-dom';
 import {ACTION_TYPES} from './actions/action-types';
+import {IntlProvider} from 'react-intl';
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 const store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
@@ -22,10 +23,13 @@ if(user) {
     store.dispatch({type: ACTION_TYPES.AUTH_MONITEUR});
 }
 
+
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
-            <Routes />
+            <IntlProvider locales={['fr-FR']}>
+                <Routes />
+            </IntlProvider>
         </Provider>
     </BrowserRouter>,
     document.getElementById('root')
