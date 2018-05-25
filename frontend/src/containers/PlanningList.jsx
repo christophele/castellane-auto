@@ -7,7 +7,6 @@ import {getPlanning, deletePlanning} from '../actions/index';
 import PlanningListItem from '../components/PlanningListItem';
 import {Link} from 'react-router-dom';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
-import NavbarPage from '../components/NavbarPage';
 import Button from '../components/Button';
 
 class PlanningList extends Component {
@@ -41,8 +40,12 @@ class PlanningList extends Component {
                         <div className="col-md-12">
                             <Card className="mt-4">
                                 <CardBody>
-                                    <h2 className="h2-responsive">Planning</h2>
-                                    <table className="table table-hover">
+                                    <h2 className="h2-responsive">Planning&nbsp;
+                                        <Link to={'/create-planning'}>
+                                            <Button><Fa icon="plus"/></Button>
+                                        </Link>
+                                    </h2>
+                                    <Table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>Nom du client</th>
@@ -59,7 +62,7 @@ class PlanningList extends Component {
                                         <tbody>
                                             {this.renderPlanning()}
                                         </tbody>
-                                    </table>
+                                    </Table>
                                 </CardBody>
                             </Card>
                         </div>

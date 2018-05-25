@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 export default function(ComposedComponent) {
     class NotAuthentication extends Component {
         componentWillMount() {
-            if (this.props.authenticated) {
+            if (this.props.clientAuthenticated) {
                 this.props.history.push('/');
             }
         }
 
         componentWillUpdate(nextProps) {
-            if (nextProps.authenticated) {
+            if (nextProps.clientAuthenticated) {
                 this.props.history.push('/');
             }
         }
@@ -26,7 +26,7 @@ export default function(ComposedComponent) {
     }
 
     function mapStateToProps(state) {
-        return {authenticated: state.auth.authenticated};
+        return {clientAuthenticated: state.clientAuth.clientAuthenticated};
     }
 
     return connect(mapStateToProps)(NotAuthentication);

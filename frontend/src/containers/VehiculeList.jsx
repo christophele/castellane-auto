@@ -6,7 +6,6 @@ import {bindActionCreators} from 'redux';
 import {getVehicules, deleteVehicule} from '../actions/index';
 import VehiculeListItem from '../components/VehiculeListItem';
 import {Link} from 'react-router-dom';
-import NavbarPage from '../components/NavbarPage';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
 import Button from '../components/Button';
 

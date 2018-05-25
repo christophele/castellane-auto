@@ -7,7 +7,6 @@ import {getClients, deleteClient} from '../actions/index';
 import ClientListItem from '../components/ClientListItem';
 import {Link} from 'react-router-dom';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
-import NavbarPage from '../components/NavbarPage';
 import Button from '../components/Button';
 
 class ClientList extends Component {
@@ -43,7 +42,7 @@ class ClientList extends Component {
                                         </Link>
                                     </h2>
 
-                                    <table className="table table-hover">
+                                    <Table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -54,6 +53,7 @@ class ClientList extends Component {
                                                 <th>Téléphone</th>
                                                 <th>Mail</th>
                                                 <th>Date d'inscription</th>
+                                                <th>Mode facturation</th>
                                                 <th>Statut</th>
                                                 <th>Mot de passe</th>
                                                 <th>Action</th>
@@ -62,7 +62,7 @@ class ClientList extends Component {
                                         <tbody>
                                             {this.renderClients()}
                                         </tbody>
-                                    </table>
+                                    </Table>
                                 </CardBody>
                             </Card>
                         </div>

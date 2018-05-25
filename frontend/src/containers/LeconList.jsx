@@ -3,14 +3,13 @@
 import React, {Component} from 'react';
 /* connect React à Redux */
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+// import des actions
 import {getLecons, deleteLecon} from '../actions/index';
+import {bindActionCreators} from 'redux';
 import LeconListItem from '../components/LeconListItem';
 import {Card, CardBody, Table, Fa} from 'mdbreact';
 import Button from '../components/Button';
 import {Link} from 'react-router-dom';
-
-import NavbarPage from '../components/NavbarPage';
 
 class LeconList extends Component {
     componentWillMount() {
@@ -47,7 +46,7 @@ class LeconList extends Component {
                                             <Button><Fa icon="plus"/></Button>
                                         </Link>
                                     </h2>
-                                    <table className="table table-hover">
+                                    <Table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -61,7 +60,7 @@ class LeconList extends Component {
                                         <tbody>
                                             {this.renderLecons()}
                                         </tbody>
-                                    </table>
+                                    </Table>
                                 </CardBody>
                             </Card>
                         </div>
@@ -76,14 +75,14 @@ class LeconList extends Component {
 const mapStateToProps = (state) => {
     return {
         /* on récupère le reducer qui lui retourne une partie du state (ici state.lecons) */
-        lecons : state.lecons // == this.props.posts
+        lecons : state.lecons // == this.props.lecons
     }
 }
 
 /* je mets l'action creator 'getLecons' dans les props (this.props.getLecons) et je veux que ça envoie (dispatch) l'action
 à tous les reducers, et le reducer concerné va attraper l'info et la mettre dans le state */
 const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({getLecons, deleteLecon}, dispatch),
+    ...bindActionCreators({getLecons, deleteLecon}, dispatch), // syntaxe ES6 car sinon c'est {getLecons : getLecons} (affectation)
 });
 
 /* on connecte le component(LeconList) à Redux */

@@ -1,4 +1,4 @@
-/* un reducer est une fonction qui retourne une partie du state d'application */
+/* un reducer est une fonction qui retourne un objet et qui devenir une partie du state d'application */
 
 import {ACTION_TYPES} from '../actions/action-types';
 
@@ -9,7 +9,7 @@ export default function(state = [], action) {
             return action.payload; // retourne le payload avec tt les lecons
         case ACTION_TYPES.DELETE_LECON:
             return state.filter((lecon) => {
-                if(lecon.numlecon == action.payload) {
+                if(lecon.numlecon === action.payload) {
                     return false;
                 } else {
                     return true;
@@ -17,6 +17,7 @@ export default function(state = [], action) {
             })
         case ACTION_TYPES.POST_LECON:
             return [...state, action.payload];
+        default:
     }
     /* si ça ne concerne pas ce reducer, on apporte aucune modif */
     return state;

@@ -16,6 +16,7 @@ const ClientListItem = (props) => {
             <td>{client.telephoneclient}</td>
             <td>{client.mailclient}</td>
             <td><Moment format="DD-MM-YYYY">{client.dateinscriptionclient}</Moment></td>
+            <td>{client.modefacturation}</td>
             <td>{client.typeclient}</td>
             <td>{client.mdpclient}</td>
             <td><Button color="danger" onClick={() => deleteClient(client)}>Supprimer</Button></td>

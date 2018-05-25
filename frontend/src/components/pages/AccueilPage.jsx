@@ -4,7 +4,6 @@ import Button from '../Button';
 import CardImage from '../CardImage';
 import FooterPage from '../FooterPage';
 import NavbarPage from '../NavbarPage';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Carousel1 from '../../img/amg_1.jpg';
 import Carousel2 from '../../img/amg_2.jpg';
 import Carousel3 from '../../img/h2r.jpg';
@@ -122,7 +121,7 @@ class AccueilPage extends Component {
                                     <CardTitle>Permis Voiture</CardTitle>
                                     <hr/>
                                     <CardText>Castellane Auto forme aux permis de conduire depuis maintenant 3 ans. Plusieurs possibilités s'offrent à vous à Castellane Auto pour obtenir votre permis voiture.</CardText>
-                                    <Button href="#">En savoir plus</Button>
+                                    <Button href="http://localhost:3000/tarifs" onClick={this.toggle}>En savoir plus</Button>
                                 </CardBody>
                             </Card>
                         </div>
@@ -133,7 +132,7 @@ class AccueilPage extends Component {
                                     <CardTitle>Permis Moto</CardTitle>
                                     <hr/>
                                     <CardText>Que vous soyez fille ou viril, petite ou grand gabarit, nos formateurs moto sont là pour vous acueillir et vous former à l'obtention du permis moto.</CardText>
-                                    <Button href="#">En savoir plus</Button>
+                                    <Button href="http://localhost:3000/tarifs">En savoir plus</Button>
                                 </CardBody>
                             </Card>
                         </div>
@@ -144,13 +143,11 @@ class AccueilPage extends Component {
                                     <CardTitle>Stage & Formation</CardTitle>
                                     <hr/>
                                     <CardText>Nous nous engageons à vous offrir les meilleures formations, stage de récupération de points, stage moto ou encore scooter 125, tenez vous prêt.</CardText>
-                                    <Button href="#">En savoir plus</Button>
+                                    <Button href="http://localhost:3000/tarifs">En savoir plus</Button>
                                 </CardBody>
                             </Card>
                         </div>
                     </div>
-                    <br/>
-                    <br/>
                     <div class="row">
                         <div class="offset-md-2 col-md-8">
                             <CardBody className="text-center">
@@ -166,9 +163,6 @@ class AccueilPage extends Component {
                             </CardBody>
                         </div>
                     </div>
-
-                    <br/>
-
                 </div>
                 <FooterPage />
             </div>

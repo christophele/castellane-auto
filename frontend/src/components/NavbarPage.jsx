@@ -12,12 +12,10 @@ import {
     DropdownItem,
     Fa,
 } from 'mdbreact';
-import Waves from './Waves';
 import {connect} from 'react-redux';
 import {Link, NavLink} from 'react-router-dom';
-import {List, ListItem} from 'material-ui/List';
+import {ListItem} from 'material-ui/List';
 import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -49,15 +47,32 @@ class NavbarPage extends Component {
 
     toggleDrawer = () => this.setState({open: !this.state.open});
 
-    navbarAdminLink() {
-        if(this.props.authenticated) {
+    navbarLinks() {
+        if(this.props.clientAuthenticated) {
             return [
                 <NavbarNav left="left">
                     <NavItem>
                         <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink to='#' style={{color:'black'}}>Permis</NavLink>
+                        <NavLink to='/tarifs' style={{color:'black'}}>Tarifs</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/mon-planning" style={{color:'black'}}>Mon planning</NavLink>
+                    </NavItem>
+                </NavbarNav>
+            ];
+        } else if (this.props.authenticated) {
+            return [
+                <NavbarNav left="left">
+                    <NavItem>
+                        <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/tarifs' style={{color:'black'}}>Tarifs</NavLink>
                     </NavItem>
                     <NavItem>
                         <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
@@ -160,24 +175,25 @@ class NavbarPage extends Component {
                     </NavItem>
                 </NavbarNav>
             ];
+        } else {
+            return [
+                <NavbarNav left="left">
+                    <NavItem>
+                        <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to='/tarifs' style={{color:'black'}}>Tarifs</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
+                    </NavItem>
+                </NavbarNav>
+            ]
         }
-        return [
-            <NavbarNav left="left">
-                <NavItem>
-                    <NavLink to="/" style={{color:'black'}}>Accueil</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to='#' style={{color:'black'}}>Permis</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
-                </NavItem>
-            </NavbarNav>
-        ]
     }
 
-    navbarSigninLink() {
-        if(this.props.authenticated) {
+    navbarSigninLinks() {
+        if(this.props.clientAuthenticated || this.props.authenticated) {
             return [
                 <NavbarNav right="right">
                     <NavItem>
@@ -190,39 +206,37 @@ class NavbarPage extends Component {
                     </NavItem>
                 </NavbarNav>
             ];
+        } else {
+            return [
+                <NavbarNav right="right">
+                    <NavItem>
+                        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                            <DropdownToggle nav="nav" caret="caret"><Fa icon="user"/>&nbsp;Connexion&nbsp;</DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem href="/connexion">Entreprise</DropdownItem>
+                                <DropdownItem href="/connexion-client">Client</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    </NavItem>
+                </NavbarNav>
+            ];
         }
-        return [
-            <NavbarNav right="right">
-                <NavItem>
-                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                        <DropdownToggle nav="nav" caret="caret"><Fa icon="user"/>&nbsp;Connexion&nbsp;</DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem href="/connexion">Entreprise</DropdownItem>
-                            <DropdownItem href="/connexion-client">Client</DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                </NavItem>
-            </NavbarNav>
-        ];
+
     }
+
+
+
 
     render() {
         return (
-            // <nav className="navbar">
-            //     <div className="container">
-            //         <Link to='/'><span className="brand">Authentification</span></Link>
-            //     </div>
-            //     {this.navbarLink()}
-            // </nav>
             <Navbar light color="blue-grey lighten-3" expand="md" scrolling="scrolling">
                 <NavbarBrand style={{fontWeight: 'bold'}} href="/">
                     Castellane Auto
                 </NavbarBrand>
                 {!this.state.isWideEnough && <NavbarToggler onClick={this.onClick}/>}
                 <Collapse isOpen={this.state.collapse} navbar="navbar">
-
-                    {this.navbarAdminLink()}
-                    {this.navbarSigninLink()}
+                    {this.navbarLinks()}
+                    {this.navbarSigninLinks()}
                 </Collapse>
             </Navbar>
         );
@@ -231,7 +245,8 @@ class NavbarPage extends Component {
 
 function mapStateToProps(state) {
     return {
-        authenticated: state.auth.authenticated
+        authenticated: state.auth.authenticated,
+        clientAuthenticated: state.clientAuth.clientAuthenticated
     };
 }
 

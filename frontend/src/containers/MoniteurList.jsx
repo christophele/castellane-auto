@@ -4,7 +4,6 @@ import {bindActionCreators} from 'redux';
 import {getMoniteurs} from '../actions/index';
 import MoniteurListItem from '../components/MoniteurListItem';
 import {Card, CardBody, Table} from 'mdbreact';
-import NavbarPage from '../components/NavbarPage';
 
 class MoniteurList extends Component {
     componentWillMount() {
@@ -51,7 +50,6 @@ class MoniteurList extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 }

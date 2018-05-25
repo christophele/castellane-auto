@@ -22,48 +22,43 @@ class MessageForm extends Component {
                     <form className="form" onSubmit={handleSubmit(this.createMessage.bind(this))}>
                         <p className="h3 text-center mb-4">Nous contacter</p>
                         <div className="form-group">
+                            <label>Prénom</label>
                             <Field
                                 name="prenom"
                                 component="input"
                                 type="text"
-                                placeholder="Prénom"
-                                {...fields.prenom}
                             />
                         </div>
                         <div className="form-group">
+                            <label>Nom</label>
                             <Field
                                 name="nom"
                                 component="input"
                                 type="text"
-                                placeholder="Nom"
-                                {...fields.nom}
                             />
                         </div>
                         <div className="form-group">
+                            <label>Email</label>
                             <Field
                                 name="email"
                                 component="input"
-                                type="text"
-                                placeholder="Email"
-                                {...fields.email}
+                                type="email"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Sujet</label>
                             <Field
                                 name="sujet"
                                 component="input"
                                 type="text"
-                                placeholder="Sujet"
-                                {...fields.sujet}
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Message</label>
                             <Field
                                 name="message"
                                 component="input"
                                 type="text"
-                                placeholder="Message"
-                                {...fields.message}
                             />
                         </div>
                         <div className="text-center">

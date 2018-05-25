@@ -4,9 +4,7 @@ import {reduxForm, Field} from 'redux-form';
 import {createVehicule} from '../actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import NavbarPage from '../components/NavbarPage';
 import Button from '../components/Button';
-import VehiculeList from './VehiculeList';
 
 const formConfig = {
     form: 'createVehiculeForm',
@@ -24,43 +22,43 @@ class VehiculeForm extends Component {
                     <form className="form" onSubmit={handleSubmit(this.createVehicule.bind(this))}>
                         <p className="h3 text-center mb-4">Ajout d'un véhicule</p>
                         <div className="form-group">
+                            <label>Numéro du véhicule</label>
                             <Field
                                 name="numvehicule"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro du véhicule"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Marque</label>
                             <Field
                                 name="marque"
                                 component="input"
                                 type="text"
-                                placeholder="Marque"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Immatriculation</label>
                             <Field
                                 name="immatriculation"
                                 component="input"
                                 type="text"
-                                placeholder="Immatriculation"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Modèle</label>
                             <Field
                                 name="model"
                                 component="input"
                                 type="text"
-                                placeholder="Modèle"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Date d'achat</label>
                             <Field
                                 name="date_achat"
                                 component="input"
-                                type="text"
-                                placeholder="Date d'achat (AAAA-MM-JJ)"
+                                type="date"
                             />
                         </div>
                         <Link to={'/vehicules'}>

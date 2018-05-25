@@ -13,7 +13,7 @@ class SignoutPage extends Component {
             <div>
                 <NavbarPage />
                 <div>
-                    <p>Vous avez été déconnecté</p>
+                    <p>Vous avez été déconnecté avec succès.</p>
                 </div>
             </div>
         )

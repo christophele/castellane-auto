@@ -4,11 +4,12 @@ import {reduxForm, Field} from 'redux-form';
 import {createLecon} from '../actions/index';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 const formConfig = {
     form: 'createLeconForm',
-    fields: ['datelecon', 'heurelecon', 'tarifheure', 'id_demande']
+    fields: ['datelecon', 'heurelecon', 'tarifheure', 'id_demande'],
+    validate: validate
 }
 
 class MessageForm extends Component {
@@ -21,42 +22,41 @@ class MessageForm extends Component {
                     <form className="form" onSubmit={handleSubmit(this.createLecon.bind(this))}>
                         <p className="h3 text-center mb-4">Ajouter une leçon</p>
                         <div className="form-group">
+                            <label>Date de leçon</label>
                             <Field
                                 name="datelecon"
                                 component="input"
-                                type="text"
-                                placeholder="Date de leçon (AAAA-MM-JJ)"
+                                type="date"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Heure de leçon</label>
                             <Field
                                 name="heurelecon"
                                 component="input"
-                                type="text"
-                                placeholder="Heure de leçon"
+                                type="time"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Tarif de l'heure</label>
                             <Field
                                 name="tarifheure"
                                 component="input"
                                 type="number"
-                                placeholder="Tarif de l'heure"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Numéro de la demande</label>
                             <Field
                                 name="id_demande"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro de la demande"
                             />
                         </div>
-                        <div className="text-center">
-                        <Button type="submit" disabled={this.props.invalid} color="blue-grey">Envoyer
-                                <i className="fas fa-paper-plane ml-2"></i>
-                        </Button>
-                        </div>
+                        <Link to={'/lecons'}>
+                            <Button color="danger">Retour</Button>
+                        </Link>
+                        <Button type="submit" color="primary" disabled={this.props.invalid}>Créer</Button>
                     </form>
                 </div>
             </div>
@@ -65,8 +65,25 @@ class MessageForm extends Component {
 
     createLecon(lecon) {
         this.props.createLecon(lecon);
-        this.props.history.push('/lecons');
+        this.props.history.push('/create-lecon');
     }
+}
+
+function validate(values){
+    const errors = {};
+    if(!values.datelecon) {
+        errors.datelecon = "Veuillez remplir la date";
+    }
+    if(!values.heurelecon) {
+        errors.heurelecon = "Veuillez remplir l'heure de leçon";
+    }
+    if(!values.tarifheure) {
+        errors.tarifheure = "Veuillez remplir le tarif";
+    }
+    if(!values.id_demande) {
+        errors.id_demande = "Veuillez remplir le numéro de la demande";
+    }
+    return errors;
 }
 
 const mapDispatchToProps = (dispatch) => ({

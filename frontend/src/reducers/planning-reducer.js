@@ -6,7 +6,7 @@ export default function (state = [], action) {
             return action.payload;
         case ACTION_TYPES.DELETE_PLANNING:
             return state.filter((planning) => {
-                if(planning.numlecon == action.payload) {
+                if(planning.numlecon === action.payload) {
                     return false;
                 } else {
                     return true;
@@ -14,6 +14,7 @@ export default function (state = [], action) {
             })
         case ACTION_TYPES.POST_PLANNING:
             return [...state, action.payload];
+        default:
     }
     return state;
 }

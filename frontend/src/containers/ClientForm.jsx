@@ -6,13 +6,12 @@ import {reduxForm, Field} from 'redux-form';
 import {createClient} from '../actions/index';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import NavbarPage from '../components/NavbarPage';
 import Button from '../components/Button';
 
 // configuration du formulaire
 const formConfig = {
     form: 'createClientForm', // nom du form
-    fields: ['nomclient', 'prenomclient', 'adresseclient', 'datedenaissanceclient', 'telephoneclient', 'mailclient', 'dateinscriptionclient', 'typeclient', 'mdpclient'], // champs du formulaire
+    fields: ['nomclient', 'prenomclient', 'adresseclient', 'datedenaissanceclient', 'telephoneclient', 'mailclient', 'dateinscriptionclient', 'modefacturation', 'typeclient', 'mdpclient'], // champs du formulaire
     validate: validate
 }
 
@@ -26,80 +25,84 @@ class ClientForm extends Component {
                 <div className="container">
                     <form className="form" onSubmit={handleSubmit(this.createClient.bind(this))}>
                         <p className="h3 text-center mb-4">Ajout d'un client</p>
-                        {/* <div className="form-group">
-                            <label>Nom</label>
-                            <input className="form-control" type="text" {...fields.nomclient} />
-                        </div> */}
                         <div className="form-group">
+                            <label>Nom</label>
                             <Field
                                 name="nomclient"
                                 component="input"
                                 type="text"
-                                placeholder="Nom"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Prénom</label>
                             <Field
                                 name="prenomclient"
                                 component="input"
                                 type="text"
-                                placeholder="Prenom"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Adresse</label>
                             <Field
                                 name="adresseclient"
                                 component="input"
                                 type="text"
-                                placeholder="Adresse"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Date de naissance</label>
                             <Field
                                 name="datedenaissanceclient"
                                 component="input"
-                                type="text"
-                                placeholder="Date de naissance (AAAA-MM-JJ)"
+                                type="date"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Téléphone</label>
                             <Field
                                 name="telephoneclient"
                                 component="input"
                                 type="number"
-                                placeholder="Téléphone"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Adresse e-mail</label>
                             <Field
                                 name="mailclient"
                                 component="input"
                                 type="email"
-                                placeholder="Adresse e-mail"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Date d'inscription</label>
                             <Field
                                 name="dateinscriptionclient"
                                 component="input"
-                                type="text"
-                                placeholder="Date d'inscription (AAAA-MM-JJ)"
+                                type="date"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Mode de facturation</label>
+                            <Field
+                                name="modefacturation"
+                                component="input"
+                                type="date"
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label>Type du client</label>
                             <Field
                                 name="typeclient"
                                 component="input"
                                 type="text"
-                                placeholder="Type du client"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Mot de passe</label>
                             <Field
                                 name="mdpclient"
                                 component="input"
                                 type="text"
-                                placeholder="Mot de passe"
                             />
                         </div>
                         <Link to={'/clients'}>

@@ -6,7 +6,7 @@ export default function (state = [], action) {
             return action.payload;
         case ACTION_TYPES.DELETE_VEHICULE:
             return state.filter((vehicule) => {
-                if(vehicule.numvehicule == action.payload) {
+                if(vehicule.numvehicule === action.payload) {
                     return false;
                 } else {
                     return true;
@@ -14,6 +14,7 @@ export default function (state = [], action) {
             })
         case ACTION_TYPES.CREATE_VEHICULE:
             return [...state, action.payload];
+        default:
     }
     return state;
 }

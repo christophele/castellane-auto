@@ -2,13 +2,13 @@ import {ACTION_TYPES} from '../actions/action-types';
 
 export default function (state={}, action) {
     switch(action.type) {
-        case ACTION_TYPES.AUTH_MONITEUR:
+        case ACTION_TYPES.AUTH_CLIENT:
             return {
-                ...state, authenticated: true
+                ...state, clientAuthenticated: true
             };
-        case ACTION_TYPES.UNAUTH_MONITEUR:
+        case ACTION_TYPES.UNAUTH_CLIENT:
             return {
-                ...state, authenticated: false
+                ...state, clientAuthenticated: false
             };
         case ACTION_TYPES.AUTH_ERROR:
             return {

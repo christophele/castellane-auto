@@ -10,6 +10,7 @@ const clientRoutes = require('./api/routes/client');
 const leconRoutes = require('./api/routes/lecon');
 const messageRoutes = require('./api/routes/message');
 const planningRoutes = require('./api/routes/planning');
+const adminRoutes = require('./api/routes/admin');
 
 // middleware body-parser
 app.use(bodyParser.json());
@@ -21,6 +22,7 @@ app.use(cors());
 // use routes
 app.use('/moniteurs', moniteurRoutes);
 app.use('/vehicules', vehiculeRoutes);
+app.use('/admins', adminRoutes);
 app.use('/clients', clientRoutes);
 app.use('/lecons', leconRoutes);
 app.use('/messages', messageRoutes);

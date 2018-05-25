@@ -62,7 +62,4 @@ router.delete('/:leconId', (req, res, next) => {
 	}
 });
 
-// INSERT INTO planning (numclient, numvehicule, numlecon, nummoniteur, etatplanning, datelecon, heuredebut, heurefin) VALUES
-// ('128', '4', '4', '10', 'Validé', CURDATE(), CURTIME(), CURTIME());
-
 module.exports = router;

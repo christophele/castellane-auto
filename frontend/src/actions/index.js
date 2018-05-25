@@ -1,5 +1,8 @@
-/* action creator */
+/* action creator est une fonction qui retourne un objet*/
 /* une action renvoie un type (nom de l'action) et un payload (les données) */
+
+/* quand l'action est retourné, redux va appelé tout les reducers et et leur envoyé l'action et le reducer concerné va être utilisé
+car dans chaque reducer on reçoit en paramètre l'action et dans le cas où le reducer est lié au type de l'action ça retourne les données */
 
 import axios from 'axios';
 import {ACTION_TYPES} from './action-types';
@@ -85,6 +88,32 @@ export function createClient(client) {
     }
 }
 
+export function signInClient({
+    mailclient,
+    mdpclient
+}, history) {
+    return async (dispatch) => {
+        try {
+            console.log(mailclient);
+            console.log(mdpclient);
+            const res = await axios.post(`${API_END_POINT}/clients/connexion`, {mailclient, mdpclient});
+
+            dispatch({type: ACTION_TYPES.AUTH_CLIENT});
+            localStorage.setItem('userClient', res.data.token);
+            history.push('/');
+        } catch (error) {
+            dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Email ou mot de passe invalide'});
+        }
+    };
+}
+
+export function signOutClient() {
+    localStorage.clear();
+    return {
+        type: ACTION_TYPES.UNAUTH_CLIENT
+    };
+}
+
 /**********************************/
 /************ MONITEUR ************/
 /**********************************/
@@ -95,6 +124,14 @@ export function getMoniteurs() {
             dispatch({type: ACTION_TYPES.GET_MONITEURS, payload: response.data})
         }).catch((error) => {
             dispatch({type: ACTION_TYPES.ERROR, payload: error.data})
+        });
+    }
+}
+
+export function getMoniteurById(id) {
+    return function(dispatch) {
+        axios.get(`${API_END_POINT}/moniteurs/${id}`).then((response) => {
+            dispatch({type: ACTION_TYPES.GET_MONITEUR, payload: response.data})
         });
     }
 }
@@ -111,9 +148,9 @@ export function signInMoniteur({
 
             dispatch({type: ACTION_TYPES.AUTH_MONITEUR});
             localStorage.setItem('user', res.data.token);
-            history.push('/clients');
+            history.push('/');
         } catch (error) {
-            dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Invalid email or password'});
+            dispatch({type: ACTION_TYPES.AUTH_ERROR, payload: 'Email ou mot de passe invalide'});
         }
     };
 }

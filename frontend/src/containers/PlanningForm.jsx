@@ -4,7 +4,8 @@ import {reduxForm, Field} from 'redux-form';
 import {createPlanning} from '../actions/index';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
+import {Input} from 'mdbreact';
 
 const formConfig = {
     form: 'createPlanningForm',
@@ -22,74 +23,75 @@ class PlanningForm extends Component {
                     <form className="form" onSubmit={handleSubmit(this.createPlanning.bind(this))}>
                         <p className="h3 text-center mb-4">Ajouter une leçon au planning</p>
                         <div className="form-group">
+                            <label>Numéro du client</label>
                             <Field
                                 name="numclient"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro du client"
+                                label="Project Name"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Numéro du véhicule</label>
                             <Field
                                 name="numvehicule"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro du véhicule"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Numéro de leçon</label>
                             <Field
                                 name="numlecon"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro de leçon"
                             />
                         </div>
                         <div className="form-group">
+                            <label>Numéro du moniteur</label>
                             <Field
                                 name="nummoniteur"
                                 component="input"
                                 type="number"
-                                placeholder="Numéro du moniteur"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Etat de la leçon (En attente de validation, Confirmé)</label>
                             <Field
                                 name="etatplanning"
                                 component="input"
                                 type="text"
-                                placeholder="Etat de la leçon (En attente de validation, Confirmé)"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Date de leçon</label>
                             <Field
                                 name="datelecon"
                                 component="input"
-                                type="text"
-                                placeholder="Date de leçon (AAAA-MM-JJ)"
+                                type="date"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Heure début de leçon</label>
                             <Field
                                 name="heuredebut"
                                 component="input"
                                 type="text"
-                                placeholder="Heure début de leçon"
                             />
                         </div>
                         <div className="form-group mb-4">
+                            <label>Heure fin de leçon</label>
                             <Field
                                 name="heurefin"
                                 component="input"
                                 type="text"
-                                placeholder="Heure fin de leçon"
                             />
                         </div>
-                        <div className="text-center">
-                        <Button type="submit" disabled={this.props.invalid} color="blue-grey">Envoyer
-                                <i className="fas fa-paper-plane ml-2"></i>
-                        </Button>
-                        </div>
+                        <Link to={'/planning'}>
+                            <Button color="danger">Retour</Button>
+                        </Link>
+
+                        <Button type="submit" color="primary" disabled={this.props.invalid}>Créer</Button>
                     </form>
                 </div>
             </div>
@@ -98,7 +100,7 @@ class PlanningForm extends Component {
 
     createPlanning(planning) {
         this.props.createPlanning(planning);
-        this.props.history.push('/');
+        this.props.history.push('/create-planning');
     }
 }
 

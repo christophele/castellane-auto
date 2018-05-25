@@ -6,7 +6,7 @@ export default function (state = [], action) {
             return action.payload;
         case ACTION_TYPES.DELETE_MESSAGE:
             return state.filter((message) => {
-                if(message.nummess == action.payload) {
+                if(message.nummess === action.payload) {
                     return false;
                 } else {
                     return true;
@@ -14,6 +14,7 @@ export default function (state = [], action) {
             })
         case ACTION_TYPES.POST_MESSAGE:
             return [...state, action.payload];
+        default:
     }
     return state;
 }
