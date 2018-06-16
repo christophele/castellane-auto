@@ -61,7 +61,7 @@ class NavbarPage extends Component {
                         <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink to="/mon-planning" style={{color:'black'}}>Mon planning</NavLink>
+                        <NavLink to="/demande-lecon" style={{fontWeight: 'bold', color:'red'}}>Faire une demande</NavLink>
                     </NavItem>
                 </NavbarNav>
             ];
@@ -83,38 +83,6 @@ class NavbarPage extends Component {
                                 <div>
                                     <Drawer width={260} open={this.state.open}>
                                         <AppBar className="blue-grey lighten-3" onLeftIconButtonClick={this.toggleDrawer} title="Castellane-Auto" />
-                                        <ListItem
-                                            primaryText="Gestion du planning"
-                                            initiallyOpen={true}
-                                            primaryTogglesNestedList={true}
-                                            nestedItems=
-                                                {[ <Link to="/planning"><ListItem key = {
-                                                    1
-                                                }
-                                                >&emsp;Liste du planning</ListItem></Link>
-                                                ,
-                                                <Link to='/create-planning'><ListItem key = {
-                                                    2
-                                                }
-                                                >&emsp;Ajouter un planning</ListItem></Link>
-                                                ]}
-                                        />
-                                        <ListItem
-                                            primaryText="Gestion des leçons"
-                                            initiallyOpen={true}
-                                            primaryTogglesNestedList={true}
-                                            nestedItems=
-                                                {[ <Link to="/lecons"><ListItem key = {
-                                                    1
-                                                }
-                                                >&emsp;Liste des leçons</ListItem></Link>
-                                                ,
-                                                <Link to='/create-lecon'><ListItem key = {
-                                                    2
-                                                }
-                                                >&emsp;Ajouter une leçon</ListItem></Link>
-                                                ]}
-                                        />
                                         <ListItem
                                             primaryText="Gestion des clients"
                                             initiallyOpen={true}
@@ -148,6 +116,39 @@ class NavbarPage extends Component {
                                                 ]}
                                         />
                                         <ListItem
+                                            primaryText="Gestion des leçons"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/lecons"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des leçons</ListItem></Link>
+                                                ,
+                                                <Link to='/create-lecon'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter une leçon</ListItem></Link>
+                                                ]}
+                                        />
+                                        <ListItem
+                                            primaryText="Gestion du planning"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/planning"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste du planning</ListItem></Link>
+                                                ,
+                                                <Link to='/create-planning'><ListItem key = {
+                                                    2
+                                                }
+                                                >&emsp;Ajouter un planning</ListItem></Link>
+                                                ]}
+                                        />
+
+                                        <ListItem
                                             primaryText="Gestion des messages"
                                             initiallyOpen={true}
                                             primaryTogglesNestedList={true}
@@ -169,6 +170,17 @@ class NavbarPage extends Component {
                                                 >&emsp;Liste des moniteurs</ListItem></Link>
                                                 ]}
                                         />
+                                        <ListItem
+                                            primaryText="Gestion des demandes"
+                                            initiallyOpen={true}
+                                            primaryTogglesNestedList={true}
+                                            nestedItems=
+                                                {[ <Link to="/liste-demandes"><ListItem key = {
+                                                    1
+                                                }
+                                                >&emsp;Liste des demandes</ListItem></Link>
+                                                ]}
+                                        />
                                     </Drawer>
                                 </div>
                             </MuiThemeProvider>
@@ -186,6 +198,9 @@ class NavbarPage extends Component {
                     </NavItem>
                     <NavItem>
                         <NavLink to="/contact" style={{color:'black'}}>Contact</NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink to="/inscription" style={{color:'black'}}>Inscription</NavLink>
                     </NavItem>
                 </NavbarNav>
             ]

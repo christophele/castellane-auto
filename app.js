@@ -11,6 +11,7 @@ const leconRoutes = require('./api/routes/lecon');
 const messageRoutes = require('./api/routes/message');
 const planningRoutes = require('./api/routes/planning');
 const adminRoutes = require('./api/routes/admin');
+const demandeleconRoutes = require('./api/routes/demandelecon');
 
 // middleware body-parser
 app.use(bodyParser.json());
@@ -27,5 +28,7 @@ app.use('/clients', clientRoutes);
 app.use('/lecons', leconRoutes);
 app.use('/messages', messageRoutes);
 app.use('/plannings', planningRoutes);
+app.use('/demandelecon', demandeleconRoutes);
+
 
 module.exports = app;

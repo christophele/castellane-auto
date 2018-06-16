@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import NavbarPage from '../NavbarPage';
-import {signOutMoniteur} from '../../actions/index';
+import {signOutMoniteur, signOutClient} from '../../actions/index';
 
 class SignoutPage extends Component {
     componentWillMount() {
         this.props.signOutMoniteur();
+        this.props.signOutClient();
     }
 
     render() {
@@ -20,4 +21,4 @@ class SignoutPage extends Component {
     }
 }
 
-export default connect(null, {signOutMoniteur})(SignoutPage);
+export default connect(null, {signOutMoniteur, signOutClient})(SignoutPage);

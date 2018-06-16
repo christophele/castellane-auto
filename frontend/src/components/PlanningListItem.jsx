@@ -16,7 +16,7 @@ const PlanningListItem = (props) => {
             <td><Moment format="DD-MM-YYYY">{planning.date_lecon}</Moment></td>
             <td>{planning.heure_debut}</td>
             <td>{planning.heure_fin}</td>
-            <td><Button color="danger" onClick={() => deletePlanning(planning)}>Supprimer</Button></td>
+            {/* <td><Button color="danger" onClick={() => deletePlanning(planning)}>Supprimer</Button></td> */}
         </tr>
     )
 

@@ -15,7 +15,7 @@ export default function(ComposedComponent) {
                 this.props.history.push('/connexion');
             }
         }
-
+        
         PropTypes = {
             router: PropTypes.object
         }

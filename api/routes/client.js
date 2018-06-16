@@ -74,14 +74,15 @@ router.post('/', (req, res, next) => {
         telephoneclient: req.body.telephoneclient,
         mailclient: req.body.mailclient,
         dateinscriptionclient: req.body.dateinscriptionclient,
+        modefacturation: req.body.modefacturation,
         typeclient: req.body.typeclient,
         mdpclient : req.body.mdpclient
     };
 
     console.log(client);
 
-    if (client.nomclient && client.prenomclient && client.adresseclient && client.datedenaissanceclient && client.telephoneclient && client.mailclient && client.dateinscriptionclient && client.typeclient && client.mdpclient) {
-        connection.query('INSERT INTO client (nomclient, prenomclient, adresseclient, datedenaissanceclient, telephoneclient, mailclient, dateinscriptionclient, typeclient, mdpclient) values (' + "'" + client.nomclient + "'" + "," + "'" + client.prenomclient + "'" + "," + "'" + client.adresseclient + "'" + "," + "'" + client.datedenaissanceclient + "'" + "," + "'" + client.telephoneclient + "'" + "," + "'" + client.mailclient + "'" + "," + "'" + client.dateinscriptionclient + "'" + "," + "'" + client.typeclient + "'" + "," + "'" + client.mdpclient + "'" + ")", (err, data) => {
+    if (client.nomclient && client.prenomclient && client.adresseclient && client.datedenaissanceclient && client.telephoneclient && client.mailclient && client.dateinscriptionclient && client.modefacturation && client.typeclient && client.mdpclient) {
+        connection.query('INSERT INTO client (nomclient, prenomclient, adresseclient, datedenaissanceclient, telephoneclient, mailclient, dateinscriptionclient, modefacturation, typeclient, mdpclient) values (' + "'" + client.nomclient + "'" + "," + "'" + client.prenomclient + "'" + "," + "'" + client.adresseclient + "'" + "," + "'" + client.datedenaissanceclient + "'" + "," + "'" + client.telephoneclient + "'" + "," + "'" + client.mailclient + "'" + "," + "'" + client.dateinscriptionclient + "'" + "," + "'" + client.modefacturation + "'" + "," + "'" + client.typeclient + "'" + "," + "'" + client.mdpclient + "'" + ")", (err, data) => {
             if (err) {
 				console.log(err);
 				res.status(500).json({err});
